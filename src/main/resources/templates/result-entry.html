@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Enter Result</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+  <div class="container">
+
+    <nav>
+      <a th:href="@{/students}">Students</a> |
+      <a th:href="@{/subjects}">Subjects</a> |
+      <a th:href="@{/results/new}">Entry</a> |
+      <a th:href="@{/results}">All Results</a> |
+      <a th:href="@{/logout}">Logout</a>
+    </nav>
+
+    <h2>Enter Student Result</h2>
+    <form th:object="${result}" th:action="@{/results/save}" method="post">
+      <div>
+        <label>Student:
+          <select th:field="*{student.id}" required>
+            <option value="" disabled selected>Select student</option>
+            <option th:each="s : ${students}"
+                    th:value="${s.id}"
+                    th:text="${s.firstName + ' ' + s.lastName}">
+            </option>
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>Subject:
+          <select th:field="*{subject.id}" required>
+            <option value="" disabled selected>Select subject</option>
+            <option th:each="sub : ${subjects}"
+                    th:value="${sub.id}"
+                    th:text="${sub.title + ' (' + sub.code + ')'}">
+            </option>
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>Marks:
+          <input type="number" th:field="*{marks}" min="0" max="100" required/>
+        </label>
+      </div>
+      <div>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+
+  </div>
+</body>
+</html>

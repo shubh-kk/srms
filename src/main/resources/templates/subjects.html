@@ -1,0 +1,27 @@
+<!-- src/main/resources/templates/subjects.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <link rel="stylesheet" th:href="@{/css/styles.css}" /><title>Subjects</title></head>
+<body>
+<div class="container">
+  <nav><a th:href="@{/classes}">Classes</a> |
+       <a th:href="@{/subjects}">Subjects</a> |
+       <a th:href="@{/logout}">Logout</a></nav>
+  <h2>Subject Management</h2>
+  <a th:href="@{/subjects/new}" class="button">Add Subject</a>
+  <table border="1">
+    <tr><th>ID</th><th>Title</th><th>Code</th><th>Actions</th></tr>
+    <tr th:each="s : ${subjects}">
+      <td th:text="${s.id}"></td>
+      <td th:text="${s.title}"></td>
+      <td th:text="${s.code}"></td>
+      <td>
+        <a th:href="@{'/subjects/edit/' + ${s.id}}" class="button">Edit</a> |
+        <a th:href="@{'/subjects/delete/' + ${s.id}}" class="button"
+           onclick="return confirm('Delete?')">Delete</a>
+      </td>
+    </tr>
+  </table>
+  </div>
+</body>
+</html>

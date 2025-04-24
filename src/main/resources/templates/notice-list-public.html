@@ -1,0 +1,18 @@
+<!-- src/main/resources/templates/notice-list-public.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <link rel="stylesheet" th:href="@{/css/styles.css}" /><title>Announcements</title></head>
+<body>
+<div class="container">
+  <nav><a th:href="@{/login}">Admin</a></nav>
+  <h2>Announcements</h2>
+  <ul>
+    <li th:each="n : ${notices}">
+      <strong th:text="${n.title}"></strong>
+      (<span th:text="${n.datePosted}"></span>)
+      <p th:text="${n.content}"></p>
+    </li>
+  </ul>
+  </div>
+</body>
+</html>

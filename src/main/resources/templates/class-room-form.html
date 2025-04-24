@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <link rel="stylesheet" th:href="@{/css/styles.css}" /><link rel="stylesheet" th:href="@{/css/styles.css}" />
+<title>Class Form</title></head>
+<body>
+<div class="container">
+  <nav><a th:href="@{/classes}" class="button">Back to Classes</a></nav>
+  <h2 th:text="${classRoom.id} == null ? 'Add Class' : 'Edit Class'"></h2>
+  <form th:action="@{/classes/save}" th:object="${classRoom}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div><label>Name:    <input th:field="*{name}" required /></label></div>
+    <div><label>Section: <input th:field="*{section}" required /></label></div>
+    <button type="submit">Save</button>
+  </form>
+  </div>
+</body>
+</html>

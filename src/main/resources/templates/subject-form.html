@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Subject Form</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+  <div class="container">
+
+    <nav>
+      <a th:href="@{/subjects}">Back to Subjects</a> |
+      <a th:href="@{/students}">Students</a> |
+      <a th:href="@{/logout}">Logout</a>
+    </nav>
+
+    <h2 th:text="(${subject.id} == null) ? 'Add Subject' : 'Edit Subject'"></h2>
+
+    <form th:object="${subject}" th:action="@{/subjects/save}" method="post">
+      <input type="hidden" th:field="*{id}" />
+      <div>
+        <label>Title:
+          <input type="text" th:field="*{title}" required />
+        </label>
+      </div>
+      <div>
+        <label>Code:
+          <input type="text" th:field="*{code}" required />
+        </label>
+      </div>
+      <div>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+
+  </div>
+</body>
+</html>

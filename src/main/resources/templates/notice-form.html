@@ -1,0 +1,17 @@
+<!-- src/main/resources/templates/notice-form.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <link rel="stylesheet" th:href="@{/css/styles.css}" /><title>Notice Form</title></head>
+<body>
+<div class="container">
+  <nav><a th:href="@{/notices}">Back to Notices</a></nav>
+  <h2 th:text="${notice.id} == null ? 'New Notice' : 'Edit Notice'"></h2>
+  <form th:action="@{/notices/save}" th:object="${notice}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div><label>Title:   <input th:field="*{title}" required /></label></div>
+    <div><label>Content:<textarea th:field="*{content}" rows="5" required></textarea></label></div>
+    <button type="submit">Save</button>
+  </form>
+  </div>
+</body>
+</html>

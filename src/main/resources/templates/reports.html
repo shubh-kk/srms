@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reports</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a th:href="@{/students}">Students</a> |
+      <a th:href="@{/results/new}">Entry</a> |
+      <a th:href="@{/results/report}">Reports</a> |
+      <a th:href="@{/logout}">Logout</a>
+    </nav>
+
+    <h2>Student Performance Reports</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Total Marks</th>
+          <th>Average</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="r : ${reports}">
+          <td th:text="${r.student.firstName + ' ' + r.student.lastName}"></td>
+          <td th:text="${r.total}"></td>
+          <td th:text="${#numbers.formatDecimal(r.average, 1, 'POINT', 1, 'NONE')}"></td>
+          <td th:text="${r.grade}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

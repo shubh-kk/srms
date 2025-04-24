@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <link rel="stylesheet" th:href="@{/css/styles.css}" /><title>Classes</title></head>
+<body>
+<div class="container">
+  <nav><a th:href="@{/students}">Students</a> |
+       <a th:href="@{/classes}">Classes</a> |
+       <a th:href="@{/logout}">Logout</a></nav>
+  <h2>Class Management</h2>
+  <a th:href="@{/classes/new}" class="button">Add New Class</a>
+  <table border="1">
+    <tr><th>ID</th><th>Name</th><th>Section</th><th>Actions</th></tr>
+    <tr th:each="c : ${classes}">
+      <td th:text="${c.id}"></td>
+      <td th:text="${c.name}"></td>
+      <td th:text="${c.section}"></td>
+      <td>
+        <a th:href="@{'/classes/edit/' + ${c.id}}">Edit</a> |
+        <a th:href="@{'/classes/delete/' + ${c.id}}"
+           onclick="return confirm('Delete?')">Delete</a>
+      </td>
+    </tr>
+  </table>
+  </div>
+</body>
+</html>

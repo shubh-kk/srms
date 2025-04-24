@@ -1,0 +1,30 @@
+<!-- src/main/resources/templates/notices.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <link rel="stylesheet" th:href="@{/css/styles.css}" /><title>Notices</title></head>
+<body>
+<div class="container">
+  <nav>
+    <a th:href="@{/students}">Students</a> |
+    <a th:href="@{/notices}">Notices</a> |
+    <a th:href="@{/announcements}">Public</a> |
+    <a th:href="@{/logout}">Logout</a>
+  </nav>
+  <h2>Manage Notices</h2>
+  <a th:href="@{/notices/new}">Post New Notice</a>
+  <table border="1">
+    <tr><th>ID</th><th>Title</th><th>Date</th><th>Actions</th></tr>
+    <tr th:each="n : ${notices}">
+      <td th:text="${n.id}"></td>
+      <td th:text="${n.title}"></td>
+      <td th:text="${n.datePosted}"></td>
+      <td>
+        <a th:href="@{'/notices/edit/' + ${n.id}}">Edit</a> |
+        <a th:href="@{'/notices/delete/' + ${n.id}}"
+           onclick="return confirm('Delete?')">Delete</a>
+      </td>
+    </tr>
+  </table>
+  </div>
+</body>
+</html>

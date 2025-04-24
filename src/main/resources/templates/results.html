@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Results</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a th:href="@{/students}">Students</a> |
+      <a th:href="@{/subjects}">Subjects</a> |
+      <a th:href="@{/results/new}">Enter Result</a> |
+      <a th:href="@{/results}">All Results</a> |
+      <a th:href="@{/logout}">Logout</a>
+    </nav>
+
+    <h2>All Results</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Student</th>
+          <th>Subject</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="r : ${results}">
+          <td th:text="${r.id}"></td>
+          <td th:text="${r.student.firstName + ' ' + r.student.lastName}"></td>
+          <td th:text="${r.subject.title}"></td>
+          <td th:text="${r.marks}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
