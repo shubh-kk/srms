@@ -11,6 +11,8 @@ public class ReportDTO {
     private List<com.technohacks.srms.model.Result> results;
 
     // constructor
+    public ReportDTO() {}
+    
     public ReportDTO(Student student, List<com.technohacks.srms.model.Result> results) {
         this.student = student;
         this.results = results;

@@ -18,6 +18,12 @@ public class Result {
     @Column(nullable = false)
     private Double marks;
 
+     // Default constructor - important for form binding
+     public Result() {
+        this.student = new Student();
+        this.subject = new Subject();
+    }
+
     // getters & setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
