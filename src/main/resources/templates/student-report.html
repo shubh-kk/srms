@@ -16,7 +16,8 @@
     <h2>Result Report for <span th:text="${report.student.firstName + ' ' + report.student.lastName}"></span></h2>
     
     <div class="student-info">
-      <p><strong>Roll Number:</strong> <span th:text="${report.student.rollNumber}"></span></p>
+      <!-- <p><strong>Roll Number:</strong> <span th:text="${report.student.id}"></span></p> -->
+      <p><strong>Student ID:</strong> <span th:text="${report.student.id}"></span></p>
       <p><strong>Total Marks:</strong> <span th:text="${report.total}"></span></p>
       <p><strong>Average:</strong> <span th:text="${#numbers.formatDecimal(report.average, 1, 'POINT', 1, 'NONE')}"></span></p>
       <p><strong>Grade:</strong> <span th:text="${report.grade}"></span></p>
