@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <th:block th:fragment="nav">
+    <nav class="dashboard-nav">
+      <!-- Public Links -->
+      <a th:href="@{/home}">Home</a>
+      <a th:href="@{/announcements}">Announcements</a>
+      <a th:href="@{/results}">All Results</a>
+      <a th:href="@{/results/report}">Reports</a>
+
+      <!-- Admin-only -->
+      <span th:if="${adminUser != null}">
+        <a th:href="@{/students}">Manage Students</a>
+        <a th:href="@{/students/new}">Add Student</a>
+        <a th:href="@{/classes}">Manage Classes</a>
+        <a th:href="@{/classes/new}">Add Class</a>
+        <a th:href="@{/subjects}">Manage Subjects</a>
+        <a th:href="@{/subjects/new}">Add Subject</a>
+        <a th:href="@{/notices}">Manage Notices</a>
+        <a th:href="@{/notices/new}">Post Notice</a>
+        <a th:href="@{/results/new}">Enter Results</a>
+        <a th:href="@{/logout}">Logout</a>
+      </span>
+
+      <!-- If not logged in -->
+      <span th:if="${adminUser == null}">
+        <a th:href="@{/login}">Admin Login</a>
+      </span>
+    </nav>
+  </th:block>
+</html>

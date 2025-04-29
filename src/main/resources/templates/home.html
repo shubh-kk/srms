@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduResultPro Dashboard</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="dashboard-header">
+      <h1>Student ReportHub Dashboard</h1>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="dashboard-nav" th:fragment="nav">
+      <a th:href="@{/}">Home</a>
+      <a th:href="@{/announcements}">Announcements</a>
+      <a th:href="@{/results/report}">View Reports</a>
+      <span th:if="${adminUser != null}">
+        <a th:href="@{/students}">Manage Students</a>
+        <a th:href="@{/classes}">Manage Classes</a>
+        <a th:href="@{/subjects}">Manage Subjects</a>
+        <a th:href="@{/notices}">Manage Notices</a>
+        <a th:href="@{/results}">Result</a>
+        <a th:href="@{/logout}">Logout</a>
+      </span>
+      <span th:if="${adminUser == null}" style="padding: 6px 12px;">
+        <a th:href="@{/login}">Admin Login</a>
+      </span>
+    </div>
+
+    <!-- WELCOME SECTION -->
+    <div class="welcome-card">
+      <h2>Welcome <span th:text="${adminUser != null} ? ${adminUser} : 'Guest'"></span></h2>
+      <p>Use the navigation above to access all features of the system.</p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="quick-links-card">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a th:href="@{/results/report}">Student Performance Reports</a></li>
+        <li><a th:href="@{/announcements}">Latest Announcements</a></li>
+        <li th:if="${adminUser != null}"><a th:href="@{/students/new}">Add New Student</a></li>
+        <li th:if="${adminUser != null}"><a th:href="@{/classes/new}">Add New Class</a></li>
+        <li th:if="${adminUser != null}"><a th:href="@{/subjects/new}">Add New Subject</a></li>
+        <li th:if="${adminUser != null}"><a th:href="@{/notices/new}">Post New Notice</a></li>
+        <li th:if="${adminUser != null}"><a th:href="@{/results/new}">Enter New Result</a></li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+</html>

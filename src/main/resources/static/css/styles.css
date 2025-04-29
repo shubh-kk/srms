@@ -124,3 +124,70 @@ ul.notice-list li strong {
   font-size: 1.2em;
   margin-bottom: 5px;
 }
+/* Dashboard Header */
+.dashboard-header {
+  background: linear-gradient(90deg, #4e54c8, #8f94fb);
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+}
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Navigation Bar */
+.dashboard-nav {
+  background-color: #2f365f;
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.dashboard-nav a {
+  color: #f1f1f1;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+.dashboard-nav a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Welcome Card */
+.welcome-card {
+  background-color: #fff;
+  border-left: 5px solid #4e54c8;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Quick Links Card */
+.quick-links-card {
+  background-color: #f0f4ff;
+  border-left: 5px solid #8f94fb;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.quick-links-card ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.quick-links-card li {
+  margin: 8px 0;
+}
+.quick-links-card a {
+  color: #4e54c8;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.quick-links-card a:hover {
+  color: #2f365f;
+}

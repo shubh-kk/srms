@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Result Details</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a th:href="@{/}">Home</a> |
+      <a th:href="@{/notices}">Notices</a> |
+      <a th:href="@{/results/report}">Results</a>
+    </nav>
+
+    <h2>Result Report for <span th:text="${report.student.firstName + ' ' + report.student.lastName}"></span></h2>
+    
+    <div class="student-info">
+      <p><strong>Roll Number:</strong> <span th:text="${report.student.rollNumber}"></span></p>
+      <p><strong>Total Marks:</strong> <span th:text="${report.total}"></span></p>
+      <p><strong>Average:</strong> <span th:text="${#numbers.formatDecimal(report.average, 1, 'POINT', 1, 'NONE')}"></span></p>
+      <p><strong>Grade:</strong> <span th:text="${report.grade}"></span></p>
+    </div>
+    
+    <h3>Subject-wise Performance</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Code</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="result : ${report.results}">
+          <td th:text="${result.subject.title}"></td>
+          <td th:text="${result.subject.code}"></td>
+          <td th:text="${result.marks}"></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <a th:href="@{/results/report}" class="button">Back to All Results</a>
+  </div>
+</body>
+</html>

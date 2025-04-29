@@ -8,10 +8,15 @@
 <body>
   <div class="container">
     <nav>
-      <a th:href="@{/students}">Students</a> |
-      <a th:href="@{/results/new}">Entry</a> |
-      <a th:href="@{/results/report}">Reports</a> |
-      <a th:href="@{/logout}">Logout</a>
+      <a th:href="@{/}">Home</a> |
+      <a th:href="@{/announcements}">Notices</a> |
+      <a th:href="@{/results/report}">Reports</a> 
+      <th:block th:if="${session.adminUser != null}"> |
+        <a th:href="@{/students}">Students</a> |
+        <a th:href="@{/subjects}">Manage Subjects</a> |
+        <a th:href="@{/results/new}">Entry</a> |
+        <a th:href="@{/logout}">Logout</a>
+      </th:block>
     </nav>
 
     <h2>Student Performance Reports</h2>
@@ -22,6 +27,7 @@
           <th>Total Marks</th>
           <th>Average</th>
           <th>Grade</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +36,9 @@
           <td th:text="${r.total}"></td>
           <td th:text="${#numbers.formatDecimal(r.average, 1, 'POINT', 1, 'NONE')}"></td>
           <td th:text="${r.grade}"></td>
+          <td>
+            <a th:href="@{'/results/student/' + ${r.student.id}}" class="button">View Details</a>
+          </td>
         </tr>
       </tbody>
     </table>

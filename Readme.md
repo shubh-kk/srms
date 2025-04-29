@@ -1,3 +1,5 @@
+If you need more admins then add it to ```data.sql``` file
+
 
 Here are a handful of **extra modules**, **features** and **quality-of-life enhancements** you can layer on top of your core Admin & Student CRUD, all using Spring Boot + Thymeleaf + PostgreSQL:
 
