@@ -1,7 +1,6 @@
 package com.technohacks.srms.service;
 
 
-import com.technohacks.srms.model.Admin;
 import com.technohacks.srms.repository.AdminRepository;
 import org.springframework.stereotype.Service;
 
