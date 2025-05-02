@@ -34,7 +34,9 @@
         <tr th:each="r : ${reports}">
           <td th:text="${r.student.firstName + ' ' + r.student.lastName}"></td>
           <td th:text="${r.total}"></td>
-          <td th:text="${#numbers.formatDecimal(r.average, 1, 'POINT', 1, 'NONE')}"></td>
+          <!-- <td th:text="${#numbers.formatDecimal(r.average, 1, 'POINT', 1, 'NONE')}"></td> -->
+          <!-- <td th:text="${#numbers.formatDecimal(r.average, 2, 'POINT')}"></td> -->
+          <td th:text="${#numbers.formatDecimal(r.average, 2, 2)}"></td>
           <td th:text="${r.grade}"></td>
           <td>
             <a th:href="@{'/results/student/' + ${r.student.id}}" class="button">View Details</a>

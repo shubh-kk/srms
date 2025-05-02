@@ -25,7 +25,7 @@ public class LoginController {
     {
         if (adminService.authenticate(username, password)) {
             session.setAttribute("adminUser", username);
-            return "redirect:/students";
+            return "redirect:/";
         }
         model.addAttribute("error", "Invalid credentials");
         return "login";

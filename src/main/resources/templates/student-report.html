@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8" />
   <title>Student Result Details</title>
   <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
+
 <body>
   <div class="container">
     <nav>
@@ -14,15 +16,18 @@
     </nav>
 
     <h2>Result Report for <span th:text="${report.student.firstName + ' ' + report.student.lastName}"></span></h2>
-    
+
     <div class="student-info">
       <!-- <p><strong>Roll Number:</strong> <span th:text="${report.student.id}"></span></p> -->
       <p><strong>Student ID:</strong> <span th:text="${report.student.id}"></span></p>
       <p><strong>Total Marks:</strong> <span th:text="${report.total}"></span></p>
-      <p><strong>Average:</strong> <span th:text="${#numbers.formatDecimal(report.average, 1, 'POINT', 1, 'NONE')}"></span></p>
+      <p><strong>Average:</strong>
+        <!-- <span th:text="${#numbers.formatDecimal(report.average, 1, 'POINT', 1, 'NONE')}"></span> -->
+        <span th:text="${#numbers.formatDecimal(report.average, 2, 2)}"></span>
+      </p>
       <p><strong>Grade:</strong> <span th:text="${report.grade}"></span></p>
     </div>
-    
+
     <h3>Subject-wise Performance</h3>
     <table>
       <thead>
@@ -40,8 +45,36 @@
         </tr>
       </tbody>
     </table>
-    
+
+    <!-- After the <table> … </table> -->
+    <div class="container">
+      <!-- <h4>Summary</h4>
+      <p>
+        <strong>Total Marks:</strong>
+        <span th:text="${report.total}"></span>
+      </p>
+      <p>
+        <strong>Average Marks:</strong>
+        <span th:text="${#numbers.formatDecimal(report.average, 2, 'POINT')}"></span>
+      </p>
+      <p>
+        <strong>Percentage:</strong>
+        <span
+          th:text="${#numbers.formatDecimal((report.total / (report.results.size() * 100)) * 100, 2, 'POINT')} + '%'"></span>
+      </p> -->
+      <h4>Summary</h4>
+      <p><strong>Total Marks:</strong> <span th:text="${report.total}"></span></p>
+      <p><strong>Average Marks:</strong> <span th:text="${#numbers.formatDecimal(report.average, 2, 2)}"></span></p>
+      <p>
+        <strong>Percentage:</strong>
+        <span th:text="(${#numbers.formatDecimal((report.total 
+                / (report.results.size() * 100)) * 100, 2, 2)} + '%')"></span>
+      </p>
+    </div>
+
+
     <a th:href="@{/results/report}" class="button">Back to All Results</a>
   </div>
 </body>
+
 </html>
